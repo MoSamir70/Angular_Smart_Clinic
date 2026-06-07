@@ -1,0 +1,11 @@
+D:\Smart Clinic\src\SmartClinic.Domain\bin\Debug\net8.0\SmartClinic.Domain.deps.json
+D:\Smart Clinic\src\SmartClinic.Domain\bin\Debug\net8.0\SmartClinic.Domain.dll
+D:\Smart Clinic\src\SmartClinic.Domain\bin\Debug\net8.0\SmartClinic.Domain.pdb
+D:\Smart Clinic\src\SmartClinic.Domain\obj\Debug\net8.0\SmartClinic.Domain.GeneratedMSBuildEditorConfig.editorconfig
+D:\Smart Clinic\src\SmartClinic.Domain\obj\Debug\net8.0\SmartClinic.Domain.AssemblyInfoInputs.cache
+D:\Smart Clinic\src\SmartClinic.Domain\obj\Debug\net8.0\SmartClinic.Domain.AssemblyInfo.cs
+D:\Smart Clinic\src\SmartClinic.Domain\obj\Debug\net8.0\SmartClinic.Domain.csproj.CoreCompileInputs.cache
+D:\Smart Clinic\src\SmartClinic.Domain\obj\Debug\net8.0\SmartClinic.Domain.dll
+D:\Smart Clinic\src\SmartClinic.Domain\obj\Debug\net8.0\refint\SmartClinic.Domain.dll
+D:\Smart Clinic\src\SmartClinic.Domain\obj\Debug\net8.0\SmartClinic.Domain.pdb
+D:\Smart Clinic\src\SmartClinic.Domain\obj\Debug\net8.0\ref\SmartClinic.Domain.dll
