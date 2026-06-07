@@ -2,6 +2,8 @@
 
 A full-stack **clinic queue and appointment management** system. Patients join a doctor's waiting queue, doctors call the next patient in real time, and admins manage clinics and staff. The backend uses **Clean Architecture** with **CQRS (MediatR)**; the frontend is **Angular 17** with **SignalR** for live updates.
 
+**Repository:** [github.com/MoSamir70/Angular_Smart_Clinic](https://github.com/MoSamir70/Angular_Smart_Clinic)
+
 ---
 
 ## What This Project Does
@@ -34,42 +36,32 @@ A full-stack **clinic queue and appointment management** system. Patients join a
 
 ## Project Structure
 
+This repo is a **two-app monorepo**: a .NET backend under `src/` and an Angular SPA under `smart-clinic-frontend/`. Open `SmartClinic.sln` in Visual Studio to work on the backend; the solution also includes a **solution folder** for the frontend entry files (`package.json`, `angular.json`).
+
 ```
 Smart Clinic/
-├── SmartClinic.sln              # .NET solution (backend only)
-├── src/
-│   ├── SmartClinic.Domain/      # Entities, enums, domain logic
-│   ├── SmartClinic.Application/ # CQRS commands/queries, DTOs, interfaces
-│   ├── SmartClinic.Infrastructure/ # EF Core DbContext, repositories, services
-│   └── SmartClinic.API/         # Controllers, SignalR hub, Program.cs
-└── smart-clinic-frontend/       # Angular SPA
+├── SmartClinic.sln                 # Backend projects + frontend solution folder
+├── .gitignore                      # Root ignore rules (.NET, Angular, IDE)
+├── src/                            # Backend source of truth (Clean Architecture)
+│   ├── SmartClinic.Domain/
+│   ├── SmartClinic.Application/
+│   ├── SmartClinic.Infrastructure/
+│   └── SmartClinic.API/
+└── smart-clinic-frontend/          # Angular SPA (run separately with npm)
     └── src/app/
-        ├── components/          # patient, doctor, admin dashboards
-        ├── services/            # api.service, signalr.service
-        └── models/              # TypeScript interfaces
+        ├── components/             # patient, doctor, admin dashboards
+        ├── services/               # api.service, signalr.service
+        └── models/
 ```
 
-### Structure assessment
+### Opening in Visual Studio
 
-**What is already good**
+| Item in Solution Explorer | What it is |
+|---------------------------|------------|
+| `src` → .NET projects | Build and run the API with F5 or `dotnet run` |
+| `smart-clinic-frontend` | Solution folder with frontend config files (not a .NET project) |
 
-- Clear **Clean Architecture** split: Domain → Application → Infrastructure → API.
-- **Feature-based CQRS** under `Application/Features/` (Queue, Appointments, etc.).
-- Frontend separated with role-based routes and dedicated API/SignalR services.
-- Solution builds successfully with .NET 8.
-
-**What should be improved**
-
-| Issue | Recommendation |
-|-------|----------------|
-| `Samrt Clinic 2/` duplicate backend + zip archives | Remove or move outside the repo; keep a single `src/` as source of truth |
-| No root `.gitignore` | Add one covering `.vs/`, `bin/`, `obj/`, `*.db`, `node_modules/`, `dist/` |
-| Frontend not referenced in `.sln` | Either add a solution folder for docs/scripts, or document the two-app layout explicitly (this README) |
-| No `tests/` project | Add `SmartClinic.Tests` for API and application layer |
-| Commented-out blocks in `Program.cs` and `.csproj` files | Clean up; use git history instead of large comment blocks |
-| `appsettings.json` lists SQL Server + Redis but runtime uses SQLite + in-memory SignalR | Align config with actual dev setup or use `appsettings.Development.json` |
-| No Docker / compose file | Optional: add `docker-compose.yml` for consistent local runs |
-| Build artifacts in workspace | Ensure `.gitignore` excludes `bin/`, `obj/`, `.angular/` |
+Run the Angular app from a terminal in `smart-clinic-frontend/` — it is not compiled by the .NET solution.
 
 ---
 
@@ -189,6 +181,17 @@ npm run build
 ```
 
 Update frontend `baseUrl` and SignalR URL to your deployed API host before production builds.
+
+---
+
+## Future improvements
+
+| Area | Suggestion |
+|------|------------|
+| Tests | Add `tests/SmartClinic.Tests` for API and application layer |
+| Config | Align `appsettings.json` with SQLite dev setup via `appsettings.Development.json` |
+| Docker | Optional `docker-compose.yml` for one-command local runs |
+| Code cleanup | Reduce large commented blocks in `.csproj` files (keep `Program.cs` history in git) |
 
 ---
 
